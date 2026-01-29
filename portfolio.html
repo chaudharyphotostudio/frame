@@ -1,82 +1,71 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Portfolio — [Photographer Name]</title>
-  <link rel="stylesheet" href="assets/css/portfolio.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="logo">[Photographer Name]</a>
-      <nav class="site-nav">
-        <a href="portfolio.html" class="active">Portfolio</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
+import React, { useState } from "react";
+
+export default function PhotoFrameShop() { const categories = ["Birthday Photo Frames", "Anniversary Photo Frames", "Wedding Photo Frames", "AI Edited Frames"]; const [selectedImage, setSelectedImage] = useState(null);
+
+return ( <div className="min-h-screen bg-amber-50 text-gray-800"> <header className="bg-amber-600 text-white p-6 text-center text-2xl font-bold shadow"> चौधरी फोटो फ्रेम स्टूडियो </header>
+
+{/* Home Section */}
+  <section className="p-6 text-center">
+    <h1 className="text-3xl font-semibold mb-3">आपका स्वागत है 🙏</h1>
+    <p className="max-w-2xl mx-auto">
+      यहाँ बर्थडे, एनिवर्सरी, वेडिंग और AI से एडिट किए गए खूबसूरत फोटो फ्रेम उपलब्ध हैं।
+      आप घर बैठे भी ऑर्डर कर सकते हैं।
+    </p>
+  </section>
+
+  {/* Gallery */}
+  <section className="p-6">
+    <h2 className="text-2xl font-semibold mb-4 text-center">गैलरी</h2>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {[1,2,3,4,5,6,7,8].map((i) => (
+        <img
+          key={i}
+          src={https://via.placeholder.com/200?text=Photo+${i}}
+          alt="फोटो"
+          className="rounded-xl shadow cursor-pointer"
+          onClick={() => setSelectedImage(https://via.placeholder.com/600?text=Photo+${i})}
+        />
+      ))}
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h1>[Photographer Name]</h1>
-        <p class="lead">Capturing moments — weddings, portraits, and commercial photography.</p>
-      </div>
-    </section>
+  {/* Lightbox */}
+  {selectedImage && (
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center" onClick={() => setSelectedImage(null)}>
+      <img src={selectedImage} className="rounded-xl shadow-xl max-h-[90%]" />
+    </div>
+  )}
 
-    <section class="gallery container" id="gallery">
-      <article class="photo">
-        <a href="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600&q=80" target="_blank" rel="noopener noreferrer">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80" alt="Wedding portrait">
-        </a>
-        <h3>Wedding — Jaipur</h3>
-      </article>
+  {/* Product Categories */}
+  <section className="p-6 bg-white">
+    <h2 className="text-2xl font-semibold mb-4 text-center">प्रोडक्ट कैटेगरी</h2>
+    <div className="grid md:grid-cols-4 gap-4">
+      {categories.map((cat) => (
+        <div key={cat} className="p-4 border rounded-xl shadow-sm bg-amber-100 text-center">
+          <h3 className="font-bold">{cat}</h3>
+          <p className="text-sm mt-2">सुंदर और गिफ्ट पैक फोटो फ्रेम</p>
+        </div>
+      ))}
+    </div>
+  </section>
 
-      <article class="photo">
-        <a href="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&q=80" target="_blank" rel="noopener noreferrer">
-          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80" alt="Couple portrait">
-        </a>
-        <h3>Couple — Delhi</h3>
-      </article>
+  {/* Contact */}
+  <section className="p-6 text-center">
+    <h2 className="text-2xl font-semibold mb-3">संपर्क करें</h2>
+    <p>पता: पटखौली , मसकनवां , गोंडा , U.P 271305</p>
+    <p className="mt-2">📞 <a href="tel:9321804923" className="text-blue-600">9321804923</a></p>
+    <p className="mt-2">✉️ <a href="mailto:rl0848966@gmail.com" className="text-blue-600">rl0848966@gmail.com</a></p>
 
-      <article class="photo">
-        <a href="https://images.unsplash.com/photo-1498575207492-5d9b6a5b1a5b?w=1600&q=80" target="_blank" rel="noopener noreferrer">
-          <img src="https://images.unsplash.com/photo-1498575207492-5d9b6a5b1a5b?w=800&q=80" alt="Portrait">
-        </a>
-        <h3>Portrait — Studio</h3>
-      </article>
+    <div className="flex justify-center gap-4 mt-4 flex-wrap">
+      <a href="https://maps.app.goo.gl/QS8HKgqMx8E33PMX7" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-amber-600 text-white rounded-xl shadow">मानचित्र पर देखें</a>
+      <a href="https://wa.me/919321804923" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-green-600 text-white rounded-xl shadow">WhatsApp पर चैट करें 📱</a>
+      <a href="https://www.instagram.com/vijay_bhai6876?igsh=bTN0eW5xZm9oNXQ=" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-pink-600 text-white rounded-xl shadow">Instagram</a>
+    </div>
+  </section>
 
-      <article class="photo">
-        <a href="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1600&q=80" target="_blank" rel="noopener noreferrer">
-          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80" alt="Commercial shoot">
-        </a>
-        <h3>Commercial — Product</h3>
-      </article>
-
-      <article class="photo">
-        <a href="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1600&q=80" target="_blank" rel="noopener noreferrer">
-          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800&q=80" alt="Street photography">
-        </a>
-        <h3>Street — India</h3>
-      </article>
-
-      <article class="photo">
-        <a href="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1600&q=80" target="_blank" rel="noopener noreferrer">
-          <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80" alt="Landscape">
-        </a>
-        <h3>Landscape — Rajasthan</h3>
-      </article>
-    </section>
-
-    <section class="cta container">
-      <p>Available for bookings worldwide. <a href="index.html#contact">Get in touch</a> for rates and availability.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">© 2026 [Photographer Name] — <a href="index.html#privacy">Privacy</a></div>
+  <footer className="bg-amber-600 text-white text-center p-4 mt-6">
+    © 2026 Photo Frame Shop | सभी अधिकार सुरक्षित
   </footer>
-</body>
-</html>
+</div>
+
+); }
