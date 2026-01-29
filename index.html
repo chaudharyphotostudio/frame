@@ -16,7 +16,7 @@
 body {
   margin: 0;
   font-family: 'Noto Serif Devanagari', serif;
-  background: #FFF3E0; /* traditional cream */
+  background: #FFF3E0;
   color: #333;
   overflow-x: hidden;
 }
@@ -99,7 +99,7 @@ section.show {
 h2 {
   text-align: center;
   margin-bottom: 10px;
-  color: #8B6508; /* gold accent */
+  color: #8B6508;
 }
 
 .frame-text { color: #2F0909; font-weight: bold; }
@@ -108,7 +108,7 @@ h2 {
 .divider {
   text-align: center;
   font-size: 28px;
-  color: #D4AF37; /* gold color */
+  color: #D4AF37;
   margin-bottom: 30px;
 }
 
@@ -298,6 +298,7 @@ footer {
   <div class="hamburger" onclick="toggleMenu()">☰</div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#home" onclick="toggleMenu()">होम</a>
+    <a href="#home" onclick="toggleMenu()">हमारी विशेषताएं</a>
     <a href="#gallery" onclick="toggleMenu()">गैलरी</a>
     <a href="#contact" onclick="toggleMenu()">संपर्क</a>
   </div>
@@ -305,7 +306,16 @@ footer {
 
 <!-- HOME -->
 <section id="home">
-  <h2>हमारी विशेषताएं</h2>
+  
+  <!-- New heading & description -->
+  <div style="text-align:center; margin-bottom:30px;">
+    <h3 style="color:#8B6508; font-size:24px; margin-bottom:10px;">आपकी यादों को </br><span class="frame-text">खूबसूरत फ्रेम</span> में संजोएं</h3>
+    <p style="color:#2F0909; font-size:16px; max-width:700px; margin:auto;">
+      जन्मदिन, सालगिरह, शादी और हर खास मौके के लिए बेहतरीन फोटो फ्रेम। अब AI तकनीक से फोटो एडिटिंग की सुविधा भी उपलब्ध।
+    </p>
+  </div>
+
+<h2>हमारी विशेषताएं</h2>
   <div class="divider">✦✧✦</div>
 
   <div class="home-cards">
@@ -342,13 +352,11 @@ footer {
   <h2>विवाह गैलरी</h2>
   <div class="divider">✦✧✦</div>
   <div class="gallery" id="galleryContainer">
-    <!-- 4 initial images -->
     <div class="photo-frame"><img src="https://images.unsplash.com/photo-1643964843674-6ba192e24b06?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
     <div class="photo-frame"><img src="https://images.unsplash.com/photo-1697684458782-aa963fc73bcc?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
     <div class="photo-frame"><img src="https://images.unsplash.com/photo-1587271315307-eaebc181c749?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
     <div class="photo-frame"><img src="https://images.unsplash.com/photo-1722952934661-dde241aeb591?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
 
-    <!-- Extra hidden images -->
     <div class="photo-frame extra-image" style="display:none;"><img src="https://images.unsplash.com/photo-1767790693009-6538e251c7c0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
     <div class="photo-frame extra-image" style="display:none;"><img src="https://images.unsplash.com/photo-1740482801914-6b6b928ba062?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
     <div class="photo-frame extra-image" style="display:none;"><img src="https://images.unsplash.com/photo-1645856051845-f0ba9cd4efb5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
@@ -424,7 +432,6 @@ function checkSections() {
     if(top < screenHeight - 100) {
       sec.classList.add('show');
 
-      // Animate cards inside section
       const cards = sec.querySelectorAll(".experience-card, .photo-frame, .contact-card");
       cards.forEach((c,i) => {
         setTimeout(() => {
@@ -448,7 +455,7 @@ function toggleGallery() {
       setTimeout(() => img.classList.add('show-frame'), i * 150);
     } else {
       img.classList.remove('show-frame');
-      setTimeout(() => img.style.display = "none", 300); // hide after fade-out
+      setTimeout(() => img.style.display = "none", 300);
     }
   });
 
