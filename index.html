@@ -1,48 +1,71 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>My Personal Page</title>
-  <link rel="stylesheet" href="assets/css/portfolio.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="logo">[Your Name]</a>
-      <nav class="site-nav">
-        <a href="portfolio.html">Portfolio</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+import React, { useState } from "react";
+
+export default function PhotoFrameShop() { const categories = ["Birthday Photo Frames", "Anniversary Photo Frames", "Wedding Photo Frames", "AI Edited Frames"]; const [selectedImage, setSelectedImage] = useState(null);
+
+return ( <div className="min-h-screen bg-amber-50 text-gray-800"> <header className="bg-amber-600 text-white p-6 text-center text-2xl font-bold shadow"> चौधरी फोटो फ्रेम स्टूडियो </header>
+
+{/* Home Section */}
+  <section className="p-6 text-center">
+    <h1 className="text-3xl font-semibold mb-3">आपका स्वागत है 🙏</h1>
+    <p className="max-w-2xl mx-auto">
+      यहाँ बर्थडे, एनिवर्सरी, वेडिंग और AI से एडिट किए गए खूबसूरत फोटो फ्रेम उपलब्ध हैं।
+      आप घर बैठे भी ऑर्डर कर सकते हैं।
+    </p>
+  </section>
+
+  {/* Gallery */}
+  <section className="p-6">
+    <h2 className="text-2xl font-semibold mb-4 text-center">गैलरी</h2>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {[1,2,3,4,5,6,7,8].map((i) => (
+        <img
+          key={i}
+          src={https://via.placeholder.com/200?text=Photo+${i}}
+          alt="फोटो"
+          className="rounded-xl shadow cursor-pointer"
+          onClick={() => setSelectedImage(https://via.placeholder.com/600?text=Photo+${i})}
+        />
+      ))}
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h1>Hi, I'm [Your Name]</h1>
-        <p class="lead">I'm a photographer — portraits, weddings and commercial work.</p>
-      </div>
-    </section>
+  {/* Lightbox */}
+  {selectedImage && (
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center" onClick={() => setSelectedImage(null)}>
+      <img src={selectedImage} className="rounded-xl shadow-xl max-h-[90%]" />
+    </div>
+  )}
 
-    <section class="profile container" id="about">
-      <div class="profile-card">
-        <img src="https://via.placeholder.com/140" alt="Profile Picture" style="border-radius:50%; width:140px; height:140px; object-fit:cover;">
-        <h2>[Your Name]</h2>
-        <p>Photography is my passion. I specialise in candid wedding photography and creative portraits.</p>
-        <p><a href="portfolio.html">See my portfolio</a></p>
-      </div>
-    </section>
+  {/* Product Categories */}
+  <section className="p-6 bg-white">
+    <h2 className="text-2xl font-semibold mb-4 text-center">प्रोडक्ट कैटेगरी</h2>
+    <div className="grid md:grid-cols-4 gap-4">
+      {categories.map((cat) => (
+        <div key={cat} className="p-4 border rounded-xl shadow-sm bg-amber-100 text-center">
+          <h3 className="font-bold">{cat}</h3>
+          <p className="text-sm mt-2">सुंदर और गिफ्ट पैक फोटो फ्रेम</p>
+        </div>
+      ))}
+    </div>
+  </section>
 
-    <section class="contact container" id="contact">
-      <h3>Contact</h3>
-      <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
-    </section>
-  </main>
+  {/* Contact */}
+  <section className="p-6 text-center">
+    <h2 className="text-2xl font-semibold mb-3">संपर्क करें</h2>
+    <p>पता: पटखौली , मसकनवां , गोंडा , U.P 271305</p>
+    <p className="mt-2">📞 <a href="tel:9321804923" className="text-blue-600">9321804923</a></p>
+    <p className="mt-2">✉️ <a href="mailto:rl0848966@gmail.com" className="text-blue-600">rl0848966@gmail.com</a></p>
 
-  <footer class="site-footer">
-    <div class="container">© 2026 [Your Name]</div>
+    <div className="flex justify-center gap-4 mt-4 flex-wrap">
+      <a href="https://maps.app.goo.gl/QS8HKgqMx8E33PMX7" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-amber-600 text-white rounded-xl shadow">मानचित्र पर देखें</a>
+      <a href="https://wa.me/919321804923" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-green-600 text-white rounded-xl shadow">WhatsApp पर चैट करें 📱</a>
+      <a href="https://www.instagram.com/vijay_bhai6876?igsh=bTN0eW5xZm9oNXQ=" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-pink-600 text-white rounded-xl shadow">Instagram</a>
+    </div>
+  </section>
+
+  <footer className="bg-amber-600 text-white text-center p-4 mt-6">
+    © 2026 Photo Frame Shop | सभी अधिकार सुरक्षित
   </footer>
-</body>
-</html>
+</div>
+
+); }
