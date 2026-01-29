@@ -8,6 +8,9 @@
 <!-- Hindi wedding font -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari&display=swap" rel="stylesheet">
 
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
 /* ===== GLOBAL ===== */
 body {
@@ -15,6 +18,7 @@ body {
   font-family: 'Noto Serif Devanagari', serif;
   background: #FFF3E0; /* traditional cream */
   color: #333;
+  overflow-x: hidden;
 }
 
 /* ===== HEADER ===== */
@@ -83,7 +87,7 @@ section {
   max-width: 1200px;
   margin: auto;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(30px);
   transition: all 1s ease;
 }
 
@@ -118,15 +122,29 @@ h2 {
 
 .experience-card {
   background: #fff;
-  padding: 20px;
+  padding: 25px 20px;
   border-radius: 12px;
   box-shadow: 0 6px 15px rgba(139,101,8,0.25);
   cursor: default;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.experience-card i {
+  font-size: 36px;
+  color: #D4AF37;
+  margin-bottom: 15px;
+  display: block;
 }
 
 .experience-card:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(212,175,55,0.6);
+  border: 2px solid #D4AF37;
 }
 
 .experience-card h3 {
@@ -138,6 +156,12 @@ h2 {
   margin: 0;
   font-weight: normal;
   color: #333;
+}
+
+/* Animate cards individually with delay */
+.experience-card.show-card {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ===== GALLERY ===== */
@@ -153,16 +177,26 @@ h2 {
   border-radius: 12px;
   box-shadow: 0 6px 15px rgba(139,101,8,0.25);
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, border 0.3s, opacity 0.6s;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .photo-frame:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(212,175,55,0.6);
+  border: 2px solid #D4AF37;
 }
 
 .photo-frame img {
   width: 100%;
   border-radius: 8px;
+}
+
+/* Animate gallery images */
+.photo-frame.show-frame {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ===== CONTACT CARDS ===== */
@@ -179,11 +213,20 @@ h2 {
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 6px 15px rgba(139,101,8,0.25);
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, border 0.3s, opacity 0.6s;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .contact-card:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(212,175,55,0.6);
+  border: 2px solid #D4AF37;
+}
+
+.contact-card.show-card {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .contact-card a {
@@ -267,22 +310,27 @@ footer {
 
   <div class="home-cards">
     <div class="experience-card">
+      <i class="fas fa-gift"></i>
       <h3>Special Frames</h3>
       <p>Birthday, Anniversary और शादी के लिए खूबसूरत फ्रेम्स</p>
     </div>
     <div class="experience-card">
+      <i class="fas fa-robot"></i>
       <h3>AI Photo Editing</h3>
       <p>आर्टिफिशियल इंटेलिजेंस से फोटो को और भी खूबसूरत बनाएं</p>
     </div>
     <div class="experience-card">
+      <i class="fas fa-certificate"></i>
       <h3>गुणवत्ता की गारंटी</h3>
       <p>उच्च गुणवत्ता वाले मटेरियल और बेहतरीन फिनिशिंग</p>
     </div>
     <div class="experience-card">
+      <i class="fas fa-pencil-ruler"></i>
       <h3>Custom Design</h3>
       <p>अपनी पसंद के अनुसार फ्रेम डिज़ाइन करवाएं</p>
     </div>
     <div class="experience-card">
+      <i class="fas fa-award"></i>
       <h3>Professional Experience</h3>
       <p>10+ वर्षों का अनुभव और उत्कृष्ट परिणाम</p>
     </div>
@@ -294,17 +342,23 @@ footer {
   <h2>विवाह गैलरी</h2>
   <div class="divider">✦✧✦</div>
   <div class="gallery" id="galleryContainer">
-    <div class="photo-frame"><img src="https://images.unsplash.com/photo-1542395970-12f99071a48c?auto=format&fit=crop&w=800&q=80" onclick="openLightbox(this)"></div>
-    <div class="photo-frame"><img src="https://images.unsplash.com/photo-1519211975560-4ca611f5a72e?auto=format&fit=crop&w=800&q=80" onclick="openLightbox(this)"></div>
-    <div class="photo-frame"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" onclick="openLightbox(this)"></div>
-    <div class="photo-frame"><img src="https://images.unsplash.com/photo-1506917987458-968b3c8b9d82?auto=format&fit=crop&w=800&q=80" onclick="openLightbox(this)"></div>
+    <!-- 4 initial images -->
+    <div class="photo-frame"><img src="https://images.unsplash.com/photo-1643964843674-6ba192e24b06?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
+    <div class="photo-frame"><img src="https://images.unsplash.com/photo-1697684458782-aa963fc73bcc?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
+    <div class="photo-frame"><img src="https://images.unsplash.com/photo-1587271315307-eaebc181c749?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
+    <div class="photo-frame"><img src="https://images.unsplash.com/photo-1722952934661-dde241aeb591?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
 
-    <div class="photo-frame extra-image" style="display:none;"><img src="https://images.unsplash.com/photo-1509475826633-fed577a2c71b?auto=format&fit=crop&w=800&q=80" onclick="openLightbox(this)"></div>
-    <div class="photo-frame extra-image" style="display:none;"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80" onclick="openLightbox(this)"></div>
+    <!-- Extra hidden images -->
+    <div class="photo-frame extra-image" style="display:none;"><img src="https://images.unsplash.com/photo-1767790693009-6538e251c7c0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
+    <div class="photo-frame extra-image" style="display:none;"><img src="https://images.unsplash.com/photo-1740482801914-6b6b928ba062?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
+    <div class="photo-frame extra-image" style="display:none;"><img src="https://images.unsplash.com/photo-1645856051845-f0ba9cd4efb5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
+    <div class="photo-frame extra-image" style="display:none;"><img src="https://images.unsplash.com/photo-1645856052181-64e9dfd9ae03?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
+    <div class="photo-frame extra-image" style="display:none;"><img src="https://images.unsplash.com/photo-1707530042522-96d72173aa8c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
+    <div class="photo-frame extra-image" style="display:none;"><img src="https://images.unsplash.com/photo-1646068176450-8d4810fd223a?q=80&w=714&auto=format&fit=crop&ixlib=rb-4.1.0" onclick="openLightbox(this)"></div>
   </div>
 
   <div style="text-align:center; margin-top:20px;">
-    <button id="viewMoreBtn" onclick="showMoreGallery()" class="experience-card" style="cursor:pointer;">और देखें</button>
+    <button id="viewMoreBtn" onclick="toggleGallery()" class="experience-card" style="cursor:pointer;">और देखें</button>
   </div>
 </section>
 
@@ -344,7 +398,6 @@ footer {
   <img id="lightboxImg">
 </div>
 
-<!-- SCRIPT -->
 <script>
 function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
@@ -359,23 +412,47 @@ function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
 }
 
+/* ===== ANIMATIONS ===== */
 const sections = document.querySelectorAll("section");
 window.addEventListener('scroll', checkSections);
 window.addEventListener('load', checkSections);
+
 function checkSections() {
   sections.forEach(sec => {
     const top = sec.getBoundingClientRect().top;
     const screenHeight = window.innerHeight;
     if(top < screenHeight - 100) {
       sec.classList.add('show');
+
+      // Animate cards inside section
+      const cards = sec.querySelectorAll(".experience-card, .photo-frame, .contact-card");
+      cards.forEach((c,i) => {
+        setTimeout(() => {
+          c.classList.add('show-card');
+          if(c.classList.contains('photo-frame')) c.classList.add('show-frame');
+        }, i*150);
+      });
     }
   });
 }
 
-function showMoreGallery() {
+/* ===== VIEW MORE / VIEW LESS GALLERY ===== */
+function toggleGallery() {
   const extras = document.querySelectorAll(".extra-image");
-  extras.forEach(img => img.style.display = "block");
-  document.getElementById("viewMoreBtn").style.display = "none";
+  const btn = document.getElementById("viewMoreBtn");
+  const isHidden = extras[0].style.display === "none" || extras[0].style.display === "";
+
+  extras.forEach((img, i) => {
+    if (isHidden) {
+      img.style.display = "block";
+      setTimeout(() => img.classList.add('show-frame'), i * 150);
+    } else {
+      img.classList.remove('show-frame');
+      setTimeout(() => img.style.display = "none", 300); // hide after fade-out
+    }
+  });
+
+  btn.textContent = isHidden ? "कम देखें" : "और देखें";
 }
 </script>
 
